@@ -20,7 +20,7 @@ as the object doesn't contains a key of 'c'
 // Given an empty object
 // When passed to contains
 // Then it should return false
-test.todo("contains on empty object returns false");
+// test.todo("contains on empty object returns false");
 describe("Check if object contains property", () => {
   it("should return false if object is empty", () => {
     const current = contains({}, "");
@@ -50,7 +50,6 @@ describe("Check if object contains property", () => {
   // When passed to contains
   // Then it should return false or throw an error
   it("should throw error for invalid object", () => {
-    const current = contains("", "c");
-    expect(current).toThrow(TypeError);
+    expect(() => contains("", "c")).toThrow("Invalid object parameter");
   });
 });
