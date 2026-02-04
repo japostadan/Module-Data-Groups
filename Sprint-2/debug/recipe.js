@@ -10,6 +10,10 @@ const recipe = {
   ingredients: ["olive oil", "tomatoes", "salt", "pepper"],
 };
 
+let itemIngredients = [];
+for (const items in recipe.ingredients) {
+  itemIngredients.push(recipe.ingredients[items]);
+}
 console.log(`${recipe.title} serves ${recipe.serves}
   ingredients:
-${recipe}`);
+${recipe.ingredients.join("\n")}`);

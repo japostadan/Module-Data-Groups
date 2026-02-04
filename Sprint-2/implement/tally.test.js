@@ -14,21 +14,50 @@ const tally = require("./tally.js");
  * tally(['a', 'a', 'b', 'c']), target output: { a : 2, b: 1, c: 1 }
  */
 
-// Acceptance criteria:
+describe("tally function", () => {
+  // Given an empty array
+  // When passed to tally
+  // Then it should return an empty object
+  it("should return empty object when empty array is passed", () => {
+    const input = [];
+    const current = tally(input);
+    const expected = {};
+    expect(current).toStrictEqual(expected);
+  });
 
-// Given a function called tally
-// When passed an array of items
-// Then it should return an object containing the count for each unique item
+  it("should return count 1 when array has one item", () => {
+    const input = ["a"];
+    const current = tally(input);
+    const expected = { a: 1 };
+    expect(current).toStrictEqual(expected);
+  });
 
-// Given an empty array
-// When passed to tally
-// Then it should return an empty object
-test.todo("tally on an empty array returns an empty object");
+  // Given an array with duplicate items
+  // When passed to tally
+  // Then it should return counts for each unique item
+  it("should return correct count for duplicate items", () => {
+    const input = ["a", "a", "a"];
+    const current = tally(input);
+    const expected = { a: 3 };
+    expect(current).toStrictEqual(expected);
+  });
 
-// Given an array with duplicate items
-// When passed to tally
-// Then it should return counts for each unique item
+  // Given a function called tally
+  // When passed an array of items
+  // Then it should return an object containing the count for each unique item
 
-// Given an invalid input like a string
-// When passed to tally
-// Then it should throw an error
+  it("should return correct counts for multiple unique items", () => {
+    const input = ["a", "a", "b", "c"];
+    const current = tally(input);
+    const expected = { a: 2, b: 1, c: 1 };
+    expect(current).toStrictEqual(expected);
+  });
+
+  // Given an invalid input like a string
+  // When passed to tally
+  // Then it should throw an error
+  it("should throw error when invalid input is passed", () => {
+    const input = "abc";
+    expect(() => tally(input)).toThrow();
+  });
+});
