@@ -1,6 +1,6 @@
 const createLookup = require("./lookup.js");
 
-test.todo("creates a country currency code lookup for multiple codes");
+//test.todo("creates a country currency code lookup for multiple codes");
 
 /*
 
@@ -33,3 +33,23 @@ It should return:
    'CA': 'CAD'
  }
 */
+describe("Convert two dimentional array into an object", () => {
+  it("should return empty object when empty array is passed", () => {
+    const input = [];
+    const current = createLookup(input);
+    const expected = {};
+    expect(current).toStrictEqual(expected);
+  });
+  it("should return empty object when empty array is passed", () => {
+    const input = [
+      ["US", "USD"],
+      ["CA", "CAD"],
+    ];
+    const current = createLookup(input);
+    const expected = {
+      US: "USD",
+      CA: "CAD",
+    };
+    expect(current).toStrictEqual(expected);
+  });
+});
