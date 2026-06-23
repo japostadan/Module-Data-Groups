@@ -11,6 +11,9 @@ const author = {
   alive: true,
 };
 
-for (const value of author) {
-  console.log(value);
+for (let value in author) {
+  if (author.hasOwnProperty(value)) {
+    let data = author[value];
+    console.log(value, data);
+  }
 }
